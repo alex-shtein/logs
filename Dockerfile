@@ -26,7 +26,6 @@ COPY scripts /app/scripts
 ENV PYTHONPATH="/app"
 
 # ----------------------------------------------------
-# --- Runtime stage ---
 FROM build_stage AS app
 
 # Устанавливаем зависимости приложения в системное окружение (без .venv)
@@ -35,7 +34,6 @@ RUN poetry config virtualenvs.create false \
 
 WORKDIR /app
 
-# Запуск как модуля (устойчиво к импортам)
 ENTRYPOINT ["python", "src/main.py"]
 
 # ----------------------------------------------------
